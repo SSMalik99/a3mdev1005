@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate } from "react-router-dom"
+import { Navigate, NavLink } from "react-router-dom"
 
 
 
@@ -16,6 +16,9 @@ const Login = () => {
 
     return (
         <div className={"container p-3"}>
+          <div className='text-center mt-5'>
+            <h3>A3_MDEV1005 Login</h3>
+        </div>
         {error && <p>{error}</p>}
         {user && (
           <Navigate to="/dashboard" replace={true} />
@@ -33,7 +36,9 @@ const Login = () => {
             <label htmlFor="password" className="form-label">Password</label>
               <input className="form-control" id="password" type="password" name="password" />
             </div>
+            <div> Go to<NavLink to={"/register"}>Register</NavLink> <b>OR</b> <NavLink to={"/"}>Home</NavLink> </div>
             <button type="submit" className="btn btn-primary">Submit</button>
+            
         </form>
         </div>
       </div>

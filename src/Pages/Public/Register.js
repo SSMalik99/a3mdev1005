@@ -1,6 +1,7 @@
 import { LocalAuth } from '../../Firebase'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { useState } from 'react'
+import { NavLink } from 'react-router-dom'
 
 
 
@@ -67,8 +68,12 @@ const Register = () => {
 
 
     return <>
-    
-        <div className="d-flex justify-content-center">
+
+        <div className='text-center mt-5'>
+            <h3>A3_MDEV1005 Register</h3>
+        </div>
+        <div className="d-flex justify-content-center mt-5">
+            
             <form
                 className="w-50"
                 onSubmit={event => register(event)}
@@ -104,7 +109,10 @@ const Register = () => {
                         <p className="text-success"> {informatioin} </p>)
                     }
 
+            <div> Go to<NavLink to={"/auth"}>Login</NavLink> <b>OR</b> <NavLink to={"/"}>Home</NavLink> </div>
+
                 <button type="submit" className="btn btn-primary">Submit</button>
+                
                 
             </form>
 
