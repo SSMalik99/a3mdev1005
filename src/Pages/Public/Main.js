@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { Fragment, useEffect, useState } from "react"
 
 import Sidebar from "../../Components/Sidebar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -15,6 +15,7 @@ import User from "../Private/User";
 import { AuthProvider } from "../../Auth/UserContext";
 import { onAuthStateChanged } from "firebase/auth";
 import { LocalAuth } from "../../Firebase";
+import PrivateRoute from "../../Components/PrivateRoutes";
 
 
 const Main = () => {
@@ -34,6 +35,7 @@ const Main = () => {
             
             <BrowserRouter>
             
+            <Fragment>
             
             {/* <Sidebar/> */}
             
@@ -43,9 +45,10 @@ const Main = () => {
             <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path="register" element={<Register />} />
-                
-                <Route path="auth" element={<Login />} >
-                    <AuthProvider value={{currentUser}}>
+                    <Route path="auth" element={<Login />} />
+
+                <Route path="/" element={<PrivateRoute />} >
+                    {/* <AuthProvider value={{currentUser}}> */}
                         <Route path='dashboard' element={<Dashboard />} />
                         <Route path='calculator' element={<Calculator />} />
                         <Route path='currency' element={<Currency />} />
@@ -53,9 +56,10 @@ const Main = () => {
                         <Route path="notes" element={<Notes/>} />
                         <Route path="news" element={<News />} />
                         <Route path="users" element={<User />} />
-                    </AuthProvider>
+                    {/* </AuthProvider> */}
                 </Route>
             </Routes>
+            </Fragment>
             </BrowserRouter>
         </main>
     )
