@@ -2,9 +2,11 @@ import { useAuthValue } from "../../Auth/UserContext"
 
 
 
+
 const Profile = () => {
     const auth = useAuthValue()
-console.log(auth.currentUser)
+    const currentUser = auth.currentUser
+    // console.log(localApp())
     return <>
     <div>
         <h3>Profile</h3>
@@ -12,7 +14,28 @@ console.log(auth.currentUser)
 
     <div className="p-5">
         <div className="card">
-            <div></div>
+            <div className="card-body">
+                <h5 className="card-title">Personal Information</h5>
+                <div className="card-body">
+                    <div>
+                        <span>
+                            <b>Name: </b>
+                        </span>
+                        <span>
+                            {currentUser.displayName}
+                        </span>
+                    </div>
+
+                    <div>
+                        <span>
+                            <b>Email: </b>
+                        </span>
+                        <span>
+                            {currentUser.email}
+                        </span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </>
