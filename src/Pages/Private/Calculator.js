@@ -57,7 +57,7 @@ const Calculator = () => {
         <div className="d-flex flex-column card p-3 border border-2 ">
         <div className="row mr-3">
             <div className="col-md-9">
-            <input className="form-control  " value={output} name="output" onChange={() => {
+            <input className="form-control  " disabled value={output} name="output" onChange={() => {
                 setOutput(output)                
             }} type="text"  />
             </div>
