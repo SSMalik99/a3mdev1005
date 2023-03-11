@@ -51,7 +51,7 @@ const Currency = () => {
     return <>
         <h5>Currency Convertor</h5>
 
-        <div>
+        <div className="card p-4">
             <div className="d-flex justify-content-between">
                 <select className="form-select mx-3" aria-label="Default select example" onChange={(event) => {
                     setFromCurrency(event.target.value)                    

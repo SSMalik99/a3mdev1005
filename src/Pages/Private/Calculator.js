@@ -5,38 +5,46 @@ const Calculator = () => {
     const [secondNumber, setsecondNumber] = useState(0)
     const [operation, setOperation] = useState("")
     const [output, setOutput] = useState(0)
+    const [firstValueAdded, setFirstValueAdded] = useState(false)
 
     const handleClick = (event) => {
-        const clickedValue = event.target.innerHTML
-        switch (clickedValue) {
-            case "+":
-                
-                break;
-        
-            case "-":
-                
-                break;
-        
-            case "/":
-                
-                break;
-            case "*":
-                
-                break;
-            case "=":
-                
-                break;
-            default:
-                break;
+
+        let clickedValue = event.target.innerHTML
+        let operatioins = ["+", "-", "*", "/", "="]
+        if (clickedValue) {
+            setOutput(firstNumber+secondNumber)
         }
+        if(operatioins.includes(clickedValue)) {
+            if (!firstValueAdded) {
+                setFirstValueAdded(true)
+            }
+            
+            setOperation(clickedValue)
+
+        }else {
+
+            if(!firstValueAdded){
+                
+                firstNumber == 0 ? setFirstNumber(clickedValue)  : setFirstNumber(firstNumber.toString()+clickedValue)
+                setOutput(firstNumber)
+                
+                
+            }else{
+
+                secondNumber == 0 ?  setsecondNumber(clickedValue): setsecondNumber(secondNumber.toString() + clickedValue)
+                setOutput(parseInt(secondNumber))
+            }
+        }
+
+        console.log(firstNumber, secondNumber, operation)
     }
 
     return <>
     <h3>Calculator</h3>
-    <div>
+    <div className="card p-5">
 
         <div className="row mr-3">
-            <input className="form-control " type="number" value={output}  />
+            <input className="form-control text-end " defaultValue={output} type="text"  />
         </div>
         
         <div className="row m-2">

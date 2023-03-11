@@ -25,12 +25,16 @@ const News = () => {
     return <>
         <h2>News</h2>
         <hr />
-        <div>
+        <div className="d-flex flex-column align-items-center">
            
             {articles.map( (article, index) => {
                 let art = article
                 return (
-                    <div className="card mb-3" key={"newItem"+ index+1}>
+                    <div className="card mb-3 p-5" style={
+                        {
+                            width:"70%"
+                        }
+                    } key={"newItem"+ index+1}>
                         <img alt="News Image" className="news-img card-img-top" src={art.urlToImage}   />
                         <div className="card-body">
                             {/* <div className="news-item"></div> */}

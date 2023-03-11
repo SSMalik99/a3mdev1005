@@ -37,7 +37,7 @@ const Notes = () => {
 
         }
         forceUpdate()
-
+        
     }
 
     const deleteFromStorage = (index) => {
@@ -76,7 +76,7 @@ const Notes = () => {
 
     return <>
         <h5>Notes</h5>
-        <section className=''>
+        <section className='card p-4'>
 
             <div className="p-3">
                 <div className="mb-6">
