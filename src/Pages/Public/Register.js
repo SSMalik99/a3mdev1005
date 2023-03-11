@@ -1,5 +1,5 @@
 import { LocalAuth } from '../../Firebase'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -9,6 +9,7 @@ const Register = () => {
     const [error, setError] = useState("")
     const [informatioin, setInformation] = useState("")
     const [email, setEmail] = useState("")
+    const [name, setName] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
@@ -53,8 +54,19 @@ const Register = () => {
             
             createUserWithEmailAndPassword(LocalAuth, email, password)
                 .then((res) => {
-                    console.log(res.user)
-                    setInformation("You are registered successfully, You can login now")
+                    if(name !== "") {
+                        updateProfile(res.user, {
+                            displayName : name
+                        }).then(() => {
+
+                            setInformation("You are registered successfully, You can login now")
+
+                        }).catch((err) => {
+                            setError(err)
+                        })
+                    }
+                    
+                    
                 })
                 .catch(err => {
                     setError(err.message)
@@ -81,6 +93,16 @@ const Register = () => {
                     {error && (
                         <p className="text-danger"> {error} </p>)
                     }
+
+                <div className="mb-3">
+                    <label htmlFor="name" className="form-label">Enter full Name</label>
+                    <input onChange={(e) => {
+                        setName(e.target.value)
+                    }}
+                    value={name}
+                    required
+                     className="form-control" type="text" id="name" name="name" />
+                </div>
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email address</label>
                     <input onChange={(e) => {

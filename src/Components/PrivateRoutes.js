@@ -6,10 +6,9 @@ import Dashboard from '../Pages/Private/Dashboard';
 const PrivateRoute = () => {
     const auth = useAuthValue()
     
-
     // If authorized, return an outlet that will render child elements
     // If not, return element that will navigate to login page
-    console.log(auth.currentUser)
+    
     
     return auth.currentUser ? <Dashboard /> : <Navigate to="/auth" />;
 }

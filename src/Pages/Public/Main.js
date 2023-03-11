@@ -16,6 +16,7 @@ import { AuthProvider } from "../../Auth/UserContext";
 import { onAuthStateChanged } from "firebase/auth";
 import { LocalAuth } from "../../Firebase";
 import PrivateRoute from "../../Components/PrivateRoutes";
+import Profile from "../Private/Profile";
 
 
 const Main = () => {
@@ -57,6 +58,7 @@ const Main = () => {
                         <Route path="notes" element={<Notes/>} />
                         <Route path="news" element={<News />} />
                         <Route path="users" element={<User />} />
+                        <Route path="me" element={<Profile />} />
                     
                 </Route>
             </Routes>
