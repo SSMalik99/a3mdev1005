@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 
 
+// register screen for the users
 const Register = () => {
     const [error, setError] = useState("")
     const [informatioin, setInformation] = useState("")
@@ -42,16 +43,17 @@ const Register = () => {
         return true
     }
 
+
     const register = event => {
 
         event.preventDefault()
         
+        // empty the previous error message
         setError('')
         
 
         if (validateCred()) {
             // Create a new user with email and password using firebase
-            
             createUserWithEmailAndPassword(LocalAuth, email, password)
                 .then((res) => {
                     if(name !== "") {
@@ -59,6 +61,7 @@ const Register = () => {
                             displayName : name
                         }).then(() => {
 
+                            // show output to the users
                             setInformation("You are registered successfully, You can login now")
 
                         }).catch((err) => {
@@ -73,6 +76,7 @@ const Register = () => {
                 })
         }
         
+        // set empty message 
         setEmail('')
         setPassword('')
         setConfirmPassword('')

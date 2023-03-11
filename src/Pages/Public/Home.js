@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 
-
+// home screen for the users
 const Home = () => {
     return <>
         <div className="container">

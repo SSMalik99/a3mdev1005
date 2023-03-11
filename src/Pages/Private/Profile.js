@@ -2,9 +2,9 @@ import { useAuthValue } from "../../Auth/UserContext"
 
 
 
-
+// Show prfoile information on dashboard screen
 const Profile = () => {
-    const auth = useAuthValue()
+    const auth = useAuthValue() // get current user
     const currentUser = auth.currentUser
     // console.log(localApp())
     return <>

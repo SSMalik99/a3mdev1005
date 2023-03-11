@@ -4,12 +4,13 @@ import { onValue, ref } from "firebase/database";
 import { useEffect, useState } from "react";
 
 
-
+// users screen on dashboard page
 const User = () => {
 
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
+        // users query
         const query = ref(firebaseDb, "users");
 
         return onValue(query, (snapshot) => {
@@ -17,6 +18,7 @@ const User = () => {
             console.log(data)
             
         });
+        // TODO: Change firebase auth to admin auth and try agian
     }, [])
     return <>
         <h3>Users</h3>

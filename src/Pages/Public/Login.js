@@ -8,6 +8,7 @@ import {useNavigate} from 'react-router-dom'
 
 
 
+// Login screen for the users
 const Login = () => {
   // const currentUser = useAuthValue()
   
@@ -20,12 +21,17 @@ const Login = () => {
   const handleSubmit = (event) => {
     // setUser({user : 1})
     event.preventDefault()
+    
+    // set error to none for new request
     setError("")
+
+    // firebase method to login
     signInWithEmailAndPassword(LocalAuth, email, password)
       .then(() => {
         
           console.log("User logged in")
           // console.log(currentUser)
+          // navigate to the dashboard
           navigate("/me", { replace: true })
        
       })

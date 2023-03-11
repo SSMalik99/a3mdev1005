@@ -1,9 +1,11 @@
 import { useRef, useState } from "react"
 
+// calculator screen for the users
 const Calculator = () => {
 
     const [output, setOutput] = useState("")
     
+    // calculate the actual value
     const calculate = () => {
         var checkResult = ''
 
@@ -22,15 +24,18 @@ const Calculator = () => {
         }
     };
 
+    // reset the calculator
     const reset = () => {
         setOutput("")
     }
 
+    // delete the previously entered value
     const backspace = () => {
 
         setOutput(output.slice(0, -1))
     };
 
+    // handle the click event on each button of the calculator
     const handleClick = (event) => {
 
         let clickedValue = event.target.innerHTML

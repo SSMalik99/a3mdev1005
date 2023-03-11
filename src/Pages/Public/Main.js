@@ -18,8 +18,10 @@ import PrivateRoute from "../../Components/PrivateRoutes";
 import Profile from "../Private/Profile";
 
 
+// component which will hold all other components
 const Main = () => {
 
+    // get current users
     const [currentUser, setCurrentUser] = useState(null)
 
 
@@ -33,6 +35,7 @@ const Main = () => {
     return (
         <main className=" ">
             
+            {/* get auth provider */}
             <AuthProvider value={{currentUser}}>
             <BrowserRouter>
             
@@ -44,10 +47,12 @@ const Main = () => {
             {/* Client side navigation */}
             {/* <PublicNav /> */}
             <Routes>
+                {/* public routes */}
                     <Route path='/' element={<Home />} />
                     <Route path="register" element={<Register />} />
                     <Route path="auth" element={<Login />} />
 
+                {/* Private routes */}
                 <Route path="/" element={<PrivateRoute />} >
                     
                         <Route path='dashboard' element={<Dashboard />} />

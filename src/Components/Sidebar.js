@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
 
+// Side for the private screens
 const Sidebar = () => {
 
     return <>

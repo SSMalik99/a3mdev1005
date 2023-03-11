@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 
+// PUBLIC nav : NOT USed
 const PublicNav = () => {
 
     return (

@@ -1,8 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 
+// NOtes screens for the users inside dashboard
 const Notes = () => {
 
-    const noteTextAreaElement = useRef(null);
+    const noteTextAreaElement = useRef(null); // get reference for the input field
     const [notes, setNotes] = useState([]);
     let storedNotes = localStorage.getItem("notes")
 
@@ -25,6 +26,7 @@ const Notes = () => {
 
     }, [notes])
 
+    // save new note for the users
     const saveToLocalStorage = () => {
         let newNote = notes
         if (noteTextAreaElement.current?.value) {
@@ -40,6 +42,7 @@ const Notes = () => {
         
     }
 
+    //  Delete a saved note
     const deleteFromStorage = (index) => {
 
         let newNotes = []

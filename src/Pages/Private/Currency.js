@@ -10,6 +10,7 @@ const currencyListQuotesOptions = {
     }
 };
 
+// currency screen for the users
 const Currency = () => {
 
     const [currencies, setCurrencies] = useState([])
@@ -18,6 +19,7 @@ const Currency = () => {
     const [rate, setRate] = useState(0)
     const [amount, setAmount] = useState(0)
 
+    // convert amount function to conver money on the basis of amount
     const convertAmount = () => {
         
         const options = {

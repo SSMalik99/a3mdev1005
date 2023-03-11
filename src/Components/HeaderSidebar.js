@@ -1,3 +1,4 @@
+// Header when sidebar is in the view port:::: --- NOT USED
 const PriavateHeader = () => {
     return <header>
         <label htmlFor="check">

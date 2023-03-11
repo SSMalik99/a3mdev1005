@@ -3,6 +3,7 @@ import { Navigate } from 'react-router-dom';
 import { useAuthValue } from '../Auth/UserContext';
 import Dashboard from '../Pages/Private/Dashboard';
 
+// Private route component to render on the basis of authentication
 const PrivateRoute = () => {
     const auth = useAuthValue()
     

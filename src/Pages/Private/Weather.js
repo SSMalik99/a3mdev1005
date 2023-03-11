@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useState } from "react"
 
+// weather screens for end users
 const Weather = () => {
     const [latLong, setLatLong] = useState({lat:null, long :null})
     const [data, setData] = useState(null)
@@ -8,15 +9,16 @@ const Weather = () => {
     
 
     // get current lat long
-
     navigator.geolocation.getCurrentPosition(postition => {
         setLatLong({lat: postition.coords.latitude.toString(), long: postition.coords.longitude.toString()})
         
     })
 
+    // function to get weather report
     const getWeatherReport = async (event) => {
         event.preventDefault()
         
+        // open weather URL
         let ApiLatLongURL = `https://api.openweathermap.org/data/2.5/weather?lat=${latLong.lat}&lon=${latLong.long}&appid=67cd7013531d6479e7562cc5c07770f4`
         console.log(data, ApiLatLongURL)
         axios.get(ApiLatLongURL).then(data => {

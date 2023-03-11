@@ -4,13 +4,14 @@ import { useEffect, useState } from "react"
 
 
 
-
+// news screen for the users
 const News = () => {
 
     const [articles, setArticles] = useState([])
     
 
     useEffect(() => {
+        // this api will run when page will load
         axios.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=5ac687e7b1c741168831774a62ce3958').then(data => {
             console.log(data.data)
             setArticles(data.data.articles)
