@@ -1,15 +1,21 @@
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from "react";
 import { Navigate, NavLink } from "react-router-dom"
+import { useAuthValue } from "../../Auth/UserContext";
 import { LocalAuth } from "../../Firebase";
+import {useNavigate} from 'react-router-dom'
+
 
 
 
 const Login = () => {
+  // const currentUser = useAuthValue()
   
   const [error, setError] = useState(null)
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const navigate = useNavigate()
+
 
   const handleSubmit = (event) => {
     // setUser({user : 1})
@@ -19,6 +25,8 @@ const Login = () => {
       .then(() => {
         
           console.log("User logged in")
+          // console.log(currentUser)
+          navigate("/dashboard", { replace: true })
        
       })
       .catch(err => setError(err.message))

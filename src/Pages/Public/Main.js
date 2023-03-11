@@ -33,6 +33,7 @@ const Main = () => {
     return (
         <main className=" ">
             
+            <AuthProvider value={{currentUser}}>
             <BrowserRouter>
             
             <Fragment>
@@ -48,7 +49,7 @@ const Main = () => {
                     <Route path="auth" element={<Login />} />
 
                 <Route path="/" element={<PrivateRoute />} >
-                    {/* <AuthProvider value={{currentUser}}> */}
+                    
                         <Route path='dashboard' element={<Dashboard />} />
                         <Route path='calculator' element={<Calculator />} />
                         <Route path='currency' element={<Currency />} />
@@ -56,11 +57,12 @@ const Main = () => {
                         <Route path="notes" element={<Notes/>} />
                         <Route path="news" element={<News />} />
                         <Route path="users" element={<User />} />
-                    {/* </AuthProvider> */}
+                    
                 </Route>
             </Routes>
             </Fragment>
             </BrowserRouter>
+            </AuthProvider>
         </main>
     )
 

@@ -1,14 +1,17 @@
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuthValue } from '../Auth/UserContext';
+import Dashboard from '../Pages/Private/Dashboard';
 
 const PrivateRoute = () => {
-    const currentUser = useAuthValue()
-    const auth = null; // determine if authorized, from context or however you're doing it
+    const auth = useAuthValue()
+    
 
     // If authorized, return an outlet that will render child elements
     // If not, return element that will navigate to login page
-    return currentUser ? <Outlet /> : <Navigate to="/login" />;
+    console.log(auth.currentUser)
+    
+    return auth.currentUser ? <Dashboard /> : <Navigate to="/auth" />;
 }
 
 export default PrivateRoute
