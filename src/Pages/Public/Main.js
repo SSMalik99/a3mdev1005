@@ -1,6 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react"
 
-import Sidebar from "../../Components/Sidebar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import Login from "./Login";

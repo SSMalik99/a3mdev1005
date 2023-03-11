@@ -22,6 +22,8 @@ const Weather = () => {
         axios.get(ApiLatLongURL).then(data => {
             
             setData(data.data)
+        }).catch(err => {
+            alert("Something went wrong!, please try later.")
         })
 
         console.log(data)
