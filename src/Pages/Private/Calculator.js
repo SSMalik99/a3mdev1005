@@ -1,50 +1,66 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 const Calculator = () => {
-    const [firstNumber, setFirstNumber] = useState(0)
-    const [secondNumber, setsecondNumber] = useState(0)
-    const [operation, setOperation] = useState("")
-    const [output, setOutput] = useState(0)
-    const [firstValueAdded, setFirstValueAdded] = useState(false)
+
+    const [output, setOutput] = useState("")
+    
+    const calculate = () => {
+        var checkResult = ''
+
+        if(output.includes('--')) {
+          checkResult = output.replace('--', '+')
+        } else {
+          checkResult = output;
+        }
+    
+        try {
+            setOutput((eval(checkResult) || "") + "")
+          
+        } catch(e) {
+          
+            setOutput("error")
+        }
+    };
+
+    const reset = () => {
+        setOutput("")
+    }
+
+    const backspace = () => {
+
+        setOutput(output.slice(0, -1))
+    };
 
     const handleClick = (event) => {
 
         let clickedValue = event.target.innerHTML
-        let operatioins = ["+", "-", "*", "/", "="]
-        if (clickedValue) {
-            setOutput(firstNumber+secondNumber)
-        }
-        if(operatioins.includes(clickedValue)) {
-            if (!firstValueAdded) {
-                setFirstValueAdded(true)
-            }
-            
-            setOperation(clickedValue)
-
-        }else {
-
-            if(!firstValueAdded){
-                
-                firstNumber == 0 ? setFirstNumber(clickedValue)  : setFirstNumber(firstNumber.toString()+clickedValue)
-                setOutput(firstNumber)
-                
-                
-            }else{
-
-                secondNumber == 0 ?  setsecondNumber(clickedValue): setsecondNumber(secondNumber.toString() + clickedValue)
-                setOutput(parseInt(secondNumber))
-            }
-        }
-
-        console.log(firstNumber, secondNumber, operation)
+        
+        if(clickedValue === "=") {
+            calculate();
+          }
+          else if(clickedValue === "clear") {
+            reset();
+          }
+          else if(clickedValue === "delete") {
+            backspace();
+          }
+          else {
+            setOutput(output + clickedValue)
+          }
+          
     }
 
     return <>
     <h3>Calculator</h3>
     <div className="card p-5">
 
+        <div className="d-flex flex-column card p-3 border border-2 ">
         <div className="row mr-3">
-            <input className="form-control text-end " defaultValue={output} type="text"  />
+            <div className="col-md-9">
+            <input className="form-control  " value={output} name="output" onChange={() => {
+                setOutput(output)                
+            }} type="text"  />
+            </div>
         </div>
         
         <div className="row m-2">
@@ -105,6 +121,22 @@ const Calculator = () => {
             <button className="btn btn-md btn-outline-primary col-md-2 mx-1" onClick={(event) => {
                 handleClick(event)
             }}>clear</button>
+        </div>
+
+        <div className="row m-2">
+            <button className="btn btn-md btn-outline-primary col-md-2 mx-1" onClick={(event) => {
+                handleClick(event)
+            }}>.</button>
+            <button className="btn btn-md btn-outline-primary col-md-2 mx-1" onClick={(event) => {
+                handleClick(event)
+            }}>{"("}</button>
+            <button className="btn btn-md btn-outline-primary col-md-2 mx-1" onClick={(event) => {
+                handleClick(event)
+            }}>{")"}</button>
+            <button className="btn btn-md btn-outline-primary col-md-2 mx-1" onClick={(event) => {
+                handleClick(event)
+            }}>{"delete"}</button>
+        </div>
         </div>
     </div>
     </>
