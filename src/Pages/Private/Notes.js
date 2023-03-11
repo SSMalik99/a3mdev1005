@@ -47,7 +47,7 @@ const Notes = () => {
 
         for (let i = 0; i < notes.length; i++) {
             const element = notes[i];
-            if (i != index) {
+            if (i !== index) {
                 newNotes.push(element)
             }
 
